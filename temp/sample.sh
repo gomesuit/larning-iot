@@ -4,12 +4,18 @@ function temp(){
   curl -sS "https://us.wio.seeed.io/v1/node/GroveTempHumD0/temperature?access_token=$ACCESS_TOKEN" | jq '.celsius_degree'
 }
 
+TEMP=$(temp)
+
+if [ $TEMP = null ]; then
+  exit 1
+fi
+
 BODY=$(cat << EOS
 [
   {
     "name": "Sensor.temp",
     "time": $(date +%s),
-    "value": $(temp)
+    "value": $TEMP
   }
 ]
 EOS
