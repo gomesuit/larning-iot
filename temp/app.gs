@@ -3,7 +3,7 @@ function postTemp(temp){
 
   var payload = [
     {
-      "name" : "Sample.foo",
+      "name" : "Sensor.temp",
       "time" : Math.floor( date.getTime() / 1000 ),
       "value" : temp
     }
