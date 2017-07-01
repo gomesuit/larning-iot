@@ -1,3 +1,9 @@
+function insertData(temperature) {
+  var datetime = new Date();
+  var sheet = SpreadsheetApp.getActiveSheet();
+  sheet.appendRow([datetime, temperature]);
+}
+
 function postTemp(temp){
   var date = new Date() ;
 
@@ -39,4 +45,5 @@ function getTemp(){
 function myFunction(){
   var temp = getTemp();
   postTemp(temp);
+  insertData(temp);
 }
